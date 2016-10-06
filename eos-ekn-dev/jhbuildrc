@@ -1,0 +1,12 @@
+# Change this path to the directory where you put the moduleset file
+modulesets_dir = os.path.expanduser('~')
+moduleset = ['eos-knowledge-lib']
+modules = ['eos-knowledge-lib']
+
+# Change these two paths to your liking
+checkoutroot = os.path.expanduser('~/checkout')
+prefix = os.path.expanduser('~/install')
+
+# Set options to your liking
+os.environ['CFLAGS'] = '-g -Og -fdiagnostics-color=auto'
+use_local_modulesets = True
