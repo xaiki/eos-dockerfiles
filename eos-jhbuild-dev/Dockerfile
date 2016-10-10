@@ -1,6 +1,7 @@
 FROM eos-dev
 ENV get="apt-get -y --force-yes --allow-unauthenticated"
 ENV DEBIAN_FRONTEND="noninteractive"
+COPY 99apt-retries /etc/apt/apt.conf.d/
 
 RUN $get update
 RUN $get install git apt-file sudo curl
