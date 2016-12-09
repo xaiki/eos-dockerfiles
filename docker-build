@@ -1,0 +1,14 @@
+#!/bin/sh
+docker run -v $PWD:/data -v $PWD/../result:/result -ti eos-dev-buildbox sh -c '\
+       dpkg -i /result/*.deb; \
+       mk-build-deps -i /data/debian/control; \
+       rsync -a /data /build; \
+       cd /build/data; \
+       git clean -dfx; \
+       source=`dpkg-parsechangelog -S Source`; \
+       version=`dpkg-parsechangelog -S Version | cut -d'-' -f1`; \
+       git archive --format=tar.gz master >| ../${source}_${version}.orig.tar.gz; \
+       dpkg-buildpackage; \
+       rm -rf /build/data; \
+       cp -a /build/* /result\
+'
