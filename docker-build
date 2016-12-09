@@ -1,6 +1,7 @@
 #!/bin/sh
 docker run -v $PWD:/data -v $PWD/../result:/result -ti eos-dev-buildbox sh -c '\
        dpkg -i /result/*.deb; \
+       DEBIAN_FRONTEND=noninteractive apt-get install -fy; \
        mk-build-deps -i /data/debian/control; \
        rsync -a /data /build; \
        cd /build/data; \
