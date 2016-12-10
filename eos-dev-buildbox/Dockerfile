@@ -15,5 +15,6 @@ RUN $get install     build-essential \
     make \
     pristine-tar \
     rsync \
-    wget
+    wget \
+    lintian
 
