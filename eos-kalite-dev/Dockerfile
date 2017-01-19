@@ -9,3 +9,4 @@ RUN $get install python3-polib
 RUN $get install gir1.2-ostree-1.0
 RUN $get install flatpak
 RUN $get install python-setuptools python-pkg-resources
+RUN $get install ostree

@@ -15,3 +15,20 @@ index a5cf99b..3132d1d 100644
  
      logging.getLogger().setLevel(logging.INFO)
      logging_handler = logging.StreamHandler()
+diff --git a/jhbuild/utils/systeminstall.py b/jhbuild/utils/systeminstall.py
+index 10e18d6..61218dc 100644
+--- a/jhbuild/utils/systeminstall.py
++++ b/jhbuild/utils/systeminstall.py
+@@ -467,9 +467,10 @@ class AptSystemInstall(SystemInstall):
+ 
+         if native_packages:
+             logging.info(_('Installing: %(pkgs)s') % {'pkgs': ' '.join(native_packages)})
+-            args = self._root_command_prefix_args + ['apt-get', 'install']
++            args = self._root_command_prefix_args + ['apt-get', 'install', '-y', '--force-yes', '--allow-unauthenticated']
+             args.extend(native_packages)
+-            subprocess.check_call(args)
++            subprocess.check_call(args, env=dict(os.environ,
++                                  DEBIAN_FRONTEND="noninteractive"))
+         else:
+             logging.info(_('Nothing to install'))
+ 

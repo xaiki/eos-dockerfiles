@@ -11,5 +11,6 @@ RUN $get -o Dpkg::Options::="--force-overwrite" install libgl1-mesa-dri:i386 lib
 RUN dpkg -i steam.deb
 RUN adduser steam
 RUN $get install libcurl3
+RUN $get install pulseaudio
 
 
