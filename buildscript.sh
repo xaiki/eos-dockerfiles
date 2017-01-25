@@ -8,7 +8,7 @@
      && source=`dpkg-parsechangelog -S Source` \
      && version=`dpkg-parsechangelog -S Version | cut -d'-' -f1` \
      && git archive --format=tar.gz master >| ../${source}_${version}.orig.tar.gz \
-     && dpkg-buildpackage ||  bash \
+     && dpkg-buildpackage  -i.* ||  bash \
      && lintian -iI --pedantic || true \
      && rm -rf /build/data \
      && cp -a /build/* /result \
